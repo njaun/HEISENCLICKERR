@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Pixelify Sans", sans-serif;
+    background-image: url('bildes/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Pixelify Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    font-family: "Pixelify Sans", sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.divider {
+    width: 2%;
+    height: 100vh;
+    background-repeat: repeat;
+    overflow: hidden;
+}
+
+.divider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cookieContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.upgradeContainer {
+    margin-top: 5%;
+    font-family: "Pixelify Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 28%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.upgradeContainer button {
+    font-family: "Pixelify Sans", sans-serif;
+    border: black 3px solid;
+    width: 85%;
+    padding: 30px 20px;
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+#upgradeBtn {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 85%;
+    background-color: #d6c20c;
+    word-wrap: break-word;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+#clickUpgradeBtn {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 85%;
+    background-color: #d6c20c;
+    word-wrap: break-word;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+#cheatBtn {
+    color: red;
+    border: black 3px solid;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 25px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 85%;
+    text-align: center;
+    font-size: 24px;
+}
+
+#cookie {
+    display: block;
+    width: auto;
+    height: 350px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+}
+
+#cookie:hover {
+    transform: scale(1.1);
+}
+
+#cookie:active {
+    transform: scale(0.95);
+}
+
+.statsContainer {
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 28%;
+    height: 100vh;
+    overflow-y: auto;
+    margin-top: 10%;
+    padding: 10px;
+}
+
+#cryst,
+#limenis,
+#tier {
+    text-align: center;
+    padding: 30px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 85%;
+    background-color: #d6c20c;
+    border: black 3px solid;
+    font-size: 32px;
+    color: black;
+}
+
+@media (max-width: 1024px) {
+    .upgradeContainer button {
+        padding: 25px 15px;
+        font-size: 26px;
+        width: 85%;
+    }
+
+    #upgradeBtn,
+    #clickUpgradeBtn {
+        padding: 25px 15px;
+    }
+
+    #cheatBtn {
+        padding: 20px 15px;
+        font-size: 20px;
+    }
+
+    #cookie {
+        height: 280px;
+    }
+
+    #cryst,
+    #limenis,
+    #tier {
+        padding: 25px 15px;
+        font-size: 26px;
+        width: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        overflow: auto;
+    }
+
+    body {
+        overflow: auto;
+        height: auto;
+    }
+
+    .container {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .upgradeContainer {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        padding: 15px;
+        overflow: visible;
+    }
+
+    .upgradeContainer button {
+        padding: 20px 15px;
+        font-size: 20px;
+        width: 85%;
+        margin: 10px 0;
+    }
+
+    #upgradeBtn,
+    #clickUpgradeBtn {
+        padding: 20px 15px;
+    }
+
+    #cheatBtn {
+        width: 85%;
+        padding: 18px 15px;
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    .cookieContainer {
+        width: 100%;
+        height: 300px;
+        padding: 20px 0;
+        overflow: visible;
+    }
+
+    #cookie {
+        height: 250px;
+    }
+
+    .statsContainer {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding: 15px;
+        overflow: visible;
+    }
+
+    #cryst,
+    #limenis,
+    #tier {
+        padding: 20px 15px;
+        font-size: 20px;
+        width: 85%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .upgradeContainer button {
+        padding: 18px 12px;
+        font-size: 18px;
+        width: 85%;
+    }
+
+    #upgradeBtn,
+    #clickUpgradeBtn {
+        padding: 18px 12px;
+    }
+
+    #cheatBtn {
+        width: 85%;
+        padding: 16px 12px;
+        font-size: 16px;
+    }
+
+    #cookie {
+        height: 200px;
+    }
+
+    #cryst,
+    #limenis,
+    #tier {
+        padding: 18px 12px;
+        font-size: 18px;
+        width: 85%;
+    }
+}
