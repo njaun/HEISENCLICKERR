@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif ($_POST['action'] === 'click') {
             $_SESSION['cryst'] += $_SESSION['clickValue'];
         } elseif ($_POST['action'] === 'autoincrement') {
+          $_SESSION['cryst'] += $_SESSION['limenis'];
         } elseif ($_POST['action'] === 'reset') {
             $_SESSION['cryst'] = 10;
             $_SESSION['clickValue'] = 1;
