@@ -48,7 +48,7 @@ body {
     object-fit: cover;
 }
 
-.cookieContainer {
+.crystalContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +68,16 @@ body {
     height: 100vh;
     overflow-y: auto;
     padding: 10px;
+}
+
+#upgrades,
+#stats {
+    margin-top: 0;
+    font-size: 36px;
+    color: #fff;
+    text-align: center; 
+    font-weight: bold;
+
 }
 
 .upgradeContainer button {
@@ -115,20 +125,22 @@ body {
     font-size: 24px;
 }
 
-#cookie {
+#crystal {
     display: block;
     width: auto;
-    height: 350px;
+    height: 600px;
+    width: 600px;
+    object-fit: contain;
     cursor: pointer;
     user-select: none;
     transition: transform 0.1s ease;
 }
 
-#cookie:hover {
+#crystal:hover {
     transform: scale(1.1);
 }
 
-#cookie:active {
+#crystal:active {
     transform: scale(0.95);
 }
 
@@ -147,9 +159,12 @@ body {
     padding: 10px;
 }
 
+
 #cryst,
 #limenis,
-#tier {
+#tier,
+#clickValue,
+#autoValue {
     text-align: center;
     padding: 30px 20px;
     margin: 10px 0;
@@ -178,13 +193,16 @@ body {
         font-size: 20px;
     }
 
-    #cookie {
-        height: 280px;
+    #crystal {
+        width: 500px;
+        height: 500px;
     }
 
     #cryst,
     #limenis,
-    #tier {
+    #tier,
+    #clickValue,
+    #autoValue {
         padding: 25px 15px;
         font-size: 26px;
         width: 85%;
@@ -210,6 +228,12 @@ body {
 
     .divider {
         display: none;
+    }
+
+    #upgrades,
+    #stats {
+        margin-top: 10px;
+        font-size: 28px;
     }
 
     .upgradeContainer {
@@ -239,15 +263,17 @@ body {
         margin: 10px 0;
     }
 
-    .cookieContainer {
+    .crystalContainer {
         width: 100%;
         height: 300px;
         padding: 20px 0;
         overflow: visible;
     }
 
-    #cookie {
-        height: 250px;
+    #crystal {
+        width: 280px;
+        height: 280px;
+        object-fit: contain;
     }
 
     .statsContainer {
@@ -261,7 +287,9 @@ body {
 
     #cryst,
     #limenis,
-    #tier {
+    #tier,
+    #clickValue,
+    #autoValue {
         padding: 20px 15px;
         font-size: 20px;
         width: 85%;
@@ -276,6 +304,12 @@ body {
         width: 85%;
     }
 
+    #upgrades,
+    #stats {
+        margin-top: 10px;
+        font-size: 24px;
+    }
+
     #upgradeBtn,
     #clickUpgradeBtn {
         padding: 18px 12px;
@@ -287,15 +321,20 @@ body {
         font-size: 16px;
     }
 
-    #cookie {
-        height: 200px;
+    #crystal {
+        width: 220px;
+        height: 220px;
+        object-fit: contain;
     }
 
     #cryst,
     #limenis,
-    #tier {
+    #tier,
+    #clickValue,
+    #autoValue {
         padding: 18px 12px;
         font-size: 18px;
         width: 85%;
     }
 }
+

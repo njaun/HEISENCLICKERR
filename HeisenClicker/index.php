@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($_POST['action'] === 'upgrade' && $_SESSION['cryst'] >= $_SESSION['upgradeCost']) {
             $_SESSION['cryst'] -= $_SESSION['upgradeCost'];
             $_SESSION['upgradeCount']++;
-            $_SESSION['upgradeCost'] = max(1, floor($_SESSION['upgradeCost'] * 1.5));
+            $_SESSION['upgradeCost'] = max(1, floor($_SESSION['upgradeCost'] * 1.2));
             
             if ($_SESSION['upgradeCount'] % 2 === 0) {
                 $_SESSION['limenis']++;
@@ -68,7 +68,9 @@ if (isset($_GET['json'])) {
         'limenis' => $_SESSION['limenis'],
         'upgradeCost' => $_SESSION['upgradeCost'],
         'clickUpgradeCost' => $_SESSION['clickUpgradeCost'],
-        'tier' => $_SESSION['tier']
+        'tier' => $_SESSION['tier'],
+        'clickValue' => round($_SESSION['clickValue'], 2),
+        'autoValue' => $_SESSION['limenis']
     ]);
     exit;
 }
@@ -83,28 +85,32 @@ if (isset($_GET['json'])) {
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container"> 
+  <div class="container">
     <div class="upgradeContainer">
+      <div id="upgrades">UPGRADES</div>  
       <button id="upgradeBtn">Upgrade Auto Clicker: <?php echo $_SESSION['upgradeCost']; ?></button>
       <button id="clickUpgradeBtn">Upgrade Click Value: <?php echo $_SESSION['clickUpgradeCost']; ?></button>
       <button id="cheatBtn">Skip to next tier</button>
     </div>
     <div class="divider"><img src="bildes/divider.png" alt="divider"></div>
      
-    <div class="cookieContainer">
-      <img id="cookie" src="chillip.png" alt="Cookie" draggable="false">
+    <div class="crystalContainer">
+      <img id="crystal" src="chillip.png" alt="Cookie" draggable="false">
     </div>
     <div class="divider"><img src="bildes/divider.png" alt="divider"></div>
-    
+
     <div class="statsContainer">
+      <div id="stats">STATS</div>
       <div id="cryst">Cryst: <?php echo floor($_SESSION['cryst']); ?></div>
+      <div id="clickValue">Click Value: <?php echo round($_SESSION['clickValue'], 2); ?></div>
+      <div id="autoValue">Auto Click Value: <?php echo $_SESSION['autoValue'] = $_SESSION['limenis']; ?></div>
       <div id="limenis">Level: <?php echo $_SESSION['limenis']; ?></div>
       <div id="tier">Tier: <?php echo $_SESSION['tier']; ?></div>
     </div>
     
   </div>
 
-  <script>
+<script>
   const tierImages = {
     'Chilli P': 'bildes/chillip.png',
     'Regular': 'bildes/regular.png',
@@ -113,34 +119,47 @@ if (isset($_GET['json'])) {
   };
 
   document.addEventListener('DOMContentLoaded', function () {
-    const cookieEl = document.getElementById('cookie');
+    const crystalEl = document.getElementById('crystal');
     const crystDisplay = document.getElementById('cryst');
     const limenisDisplay = document.getElementById('limenis');
     const tierDisplay = document.getElementById('tier');
     const upgradeBtn = document.getElementById('upgradeBtn');
     const clickUpgradeBtn = document.getElementById('clickUpgradeBtn');
     const cheatBtn = document.getElementById('cheatBtn');
+    const clickValue = document.getElementById('clickValue');
+    const autoValue = document.getElementById('autoValue');
 
-    if (!cookieEl) return;
+    if (!crystalEl) return;
+
+  function noapalot(num) {
+    if (num >= 1000000000000000) return (num / 1000000000000000).toFixed(1) + 'Qa';
+    if (num >= 1000000000000) return (num / 1000000000000).toFixed(1) + 'T';
+    if (num >= 1000000000) return (num / 1000000000).toFixed(1) + 'B';
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+    return num;
+}
 
     function updateUI() {
       fetch('<?php echo $_SERVER['PHP_SELF']; ?>?json=1')
         .then(response => response.json())
         .then(data => {
-          crystDisplay.textContent = `Cryst: ${data.cryst}`;
-          limenisDisplay.textContent = `Level: ${data.limenis}`;
+          crystDisplay.textContent = `Cryst: ${noapalot(data.cryst)}`;
+          limenisDisplay.textContent = `Level: ${noapalot(data.limenis)}`;
           tierDisplay.textContent = `Tier: ${data.tier}`;
-          upgradeBtn.textContent = `Upgrade auto clicker: ${data.upgradeCost}`;
-          clickUpgradeBtn.textContent = `Upgrade click value: ${data.clickUpgradeCost}`;
+          upgradeBtn.textContent = `Upgrade auto clicker: ${noapalot(data.upgradeCost)}`;
+          clickUpgradeBtn.textContent = `Upgrade click value: ${noapalot(data.clickUpgradeCost)}`;
           upgradeBtn.disabled = data.cryst < data.upgradeCost;
           clickUpgradeBtn.disabled = data.cryst < data.clickUpgradeCost;
-          
+          clickValue.textContent = `Click Value: ${noapalot(data.clickValue)}`;
+          autoValue.textContent = `Auto Click Value: ${noapalot(data.autoValue)}`;
+
           if (tierImages[data.tier]) {
-            cookieEl.src = tierImages[data.tier];
+            crystalEl.src = tierImages[data.tier];
           }
         });
-    }
-      cookieEl.addEventListener('click', function () {
+}
+      crystalEl.addEventListener('click', function () {
       const formData = new FormData();
       formData.append('action', 'click');
 
@@ -150,8 +169,8 @@ if (isset($_GET['json'])) {
       }).then(() => updateUI());
     });
 
-    cookieEl.addEventListener('animationend', function () {
-      cookieEl.classList.remove('animate');
+    crystalEl.addEventListener('animationend', function () {
+      crystalEl.classList.remove('animate');
     });
 
     upgradeBtn.addEventListener('click', () => {
@@ -194,6 +213,6 @@ if (isset($_GET['json'])) {
 
     updateUI();
   });
-  </script>
+</script>
 </body>
 </html>
